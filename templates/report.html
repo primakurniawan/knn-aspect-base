@@ -1,0 +1,213 @@
+{% extends 'base.html' %}
+{% block content %}
+      <div class="row">
+        <div class="card ml-1 mr-1 mt-2 mb-5 shadow" style="width: 100%">
+          <div class="card-header text-center" style="letter-spacing: 1px">
+            <h3>Summary</h3>
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col text-center">
+                <h3>The Best K Is {{ k }}</h3>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-3">
+                <h4>Accuracy</h4>
+                <div class="progress">
+                  <div class="progress-bar accuracy" role="progressbar" style="width: {{ accuracy }}%" aria-valuenow="{{ accuracy }}" aria-valuemin="0" aria-valuemax="100">{{ accuracy }}%</div>
+                </div>
+              </div>
+              <div class="col-3">
+                <h4>F1 Score</h4>
+                <div class="progress">
+                  <div class="progress-bar f1-score" role="progressbar" style="width: {{ f1_score }}%" aria-valuenow="{{ f1_score }}" aria-valuemin="0" aria-valuemax="100">{{ f1_score }}%</div>
+                </div>
+              </div>
+              <div class="col-3">
+                <h4>Precision</h4>
+                <div class="progress">
+                  <div class="progress-bar precision" role="progressbar" style="width: {{ precision }}%" aria-valuenow="{{ precision }}" aria-valuemin="0" aria-valuemax="100">{{ precision }}%</div>
+                </div>
+              </div>
+              <div class="col-3">
+                <h4>Recall</h4>
+                <div class="progress">
+                  <div class="progress-bar recall" role="progressbar" style="width: {{ recall }}%" aria-valuenow="{{ recall }}" aria-valuemin="0" aria-valuemax="100">{{ recall }}%</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="card ml-1 mr-1 mt-2 mb-5 shadow">
+          <div class="card-header text-center" style="letter-spacing: 1px">
+            <h3>Service</h3>
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-8">
+                <div class="table-responsive">
+                  <table class="table table-bordered text-center table-striped" align="left" class="tbdataset" width="100%" cellspacing="0">
+                    <thead>
+                      <tr>
+                        <th>F1-score</th>
+                        <th>Precision</th>
+                        <th>Recall</th>
+                        <th>Support</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {% for data in data_classification_report_service %}
+                      <tr>
+                        <td>{{ data['f1-score'] }}</td>
+                        <td>{{ data.precision }}</td>
+                        <td>{{ data.recall }}</td>
+                        <td>{{ data.support }}</td>
+                      </tr>
+                      {% endfor %}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div class="col-4">
+                <img src="{{ url_for('static', filename='data/img/confusion_matrix_service_{}.png'.format(tf)) }}" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="card ml-1 mr-1 mt-2 mb-5 shadow">
+          <div class="card-header text-center" style="letter-spacing: 1px">
+            <h3>Doctor</h3>
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-8">
+                <div class="table-responsive">
+                  <table class="table table-bordered text-center table-striped" align="left" class="tbdataset" width="100%" cellspacing="0">
+                    <thead>
+                      <tr>
+                        <th>F1-score</th>
+                        <th>Precision</th>
+                        <th>Recall</th>
+                        <th>Support</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {% for data in data_classification_report_doctor %}
+                      <tr>
+                        <td>{{ data['f1-score'] }}</td>
+                        <td>{{ data.precision }}</td>
+                        <td>{{ data.recall }}</td>
+                        <td>{{ data.support }}</td>
+                      </tr>
+                      {% endfor %}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div class="col-4">
+                <img src="{{ url_for('static', filename='data/img/confusion_matrix_doctor_{}.png'.format(tf)) }}" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="card ml-1 mr-1 mt-2 mb-5 shadow">
+          <div class="card-header text-center" style="letter-spacing: 1px">
+            <h3>Medicine</h3>
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-8">
+                <div class="table-responsive">
+                  <table class="table table-bordered text-center table-striped" align="left" class="tbdataset" width="100%" cellspacing="0">
+                    <thead>
+                      <tr>
+                        <th>F1-score</th>
+                        <th>Precision</th>
+                        <th>Recall</th>
+                        <th>Support</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {% for data in data_classification_report_medicine %}
+                      <tr>
+                        <td>{{ data['f1-score'] }}</td>
+                        <td>{{ data.precision }}</td>
+                        <td>{{ data.recall }}</td>
+                        <td>{{ data.support }}</td>
+                      </tr>
+                      {% endfor %}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div class="col-4">
+                <img src="{{ url_for('static', filename='data/img/confusion_matrix_medicine_{}.png'.format(tf)) }}" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="card ml-1 mr-1 mt-2 mb-5 shadow">
+          <div class="card-header text-center" style="letter-spacing: 1px">
+            <h3>Fee</h3>
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-8">
+                <div class="table-responsive">
+                  <table class="table table-bordered text-center table-striped" align="left" class="tbdataset" width="100%" cellspacing="0">
+                    <thead>
+                      <tr>
+                        <th>F1-score</th>
+                        <th>Precision</th>
+                        <th>Recall</th>
+                        <th>Support</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {% for data in data_classification_report_fee %}
+                      <tr>
+                        <td>{{ data['f1-score'] }}</td>
+                        <td>{{ data.precision }}</td>
+                        <td>{{ data.recall }}</td>
+                        <td>{{ data.support }}</td>
+                      </tr>
+                      {% endfor %}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div class="col-4">
+                <img src="{{ url_for('static', filename='data/img/confusion_matrix_fee_{}.png'.format(tf)) }}" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+{% endblock %}
+
+    {% block script %}
+    <script>
+      $(document).ready(function () {
+        $(".tbdataset").DataTable({
+              paging: false,
+              paging: false,
+              searching: false,
+              info: false,
+        });
+      })
+    </script>
+    {% endblock %}

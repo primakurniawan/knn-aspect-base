@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+{% block content %}
+      <div class="card ml-1 mr-1 mt-2 mb-5 shadow">
+        <div class="card-header" style="letter-spacing: 1px">
+          <h2>Training</h2>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-bordered text-center table-striped" alignn="left" id="tbdataset_training" width="100%" cellspacing="0">
+              <thead>
+                <tr>
+                  <th>No</th>
+                  <th>Content</th>
+                  <th>After Preprocessing</th>
+                  <th>Service</th>
+                  <th>Doctor</th>
+                  <th>Medicine</th>
+                  <th>Fee</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for data in data_training %}
+                <tr>
+                  <td>{{ loop.index }}</td>
+                  <td>{{ data.content }}</td>
+                  <td>{{ data.after_preprocessing }}</td>
+                  <td>{{ data.service }}</td>
+                  <td>{{ data.doctor }}</td>
+                  <td>{{ data.medicine }}</td>
+                  <td>{{ data.fee }}</td>
+                </tr>
+                {% endfor %}
+              </tbody>
+
+
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="card ml-1 mr-1 mt-2 mb-5 shadow">
+        <div class="card-header" style="letter-spacing: 1px">
+          <h2>Testing</h2>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-bordered text-center table-striped" alignn="left" id="tbdataset_testing" width="100%" cellspacing="0">              <thead>
+                <tr>
+                  <th rowspan="2">No</th>
+                  <th rowspan="2">Content</th>
+                  <th rowspan="2">After Preprocessing</th>
+                  <th colspan="4">Actual</th>
+                  <th colspan="4">Prediction</th>
+                </tr>
+                <tr>
+                  <th>Service</th>
+                  <th>Doctor</th>
+                  <th>Medicine</th>
+                  <th>Fee</th>
+                  <th>Service</th>
+                  <th>Doctor</th>
+                  <th>Medicine</th>
+                  <th>Fee</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for data in data_testing %}
+                <tr>
+                  <td>{{ loop.index }}</td>
+                  <td>{{ data.content }}</td>
+                  <td>{{ data.after_preprocessing }}</td>
+                  <td>{{ data.service }}</td>
+                  <td>{{ data.doctor }}</td>
+                  <td>{{ data.medicine }}</td>
+                  <td>{{ data.fee }}</td>
+                  <td>{{ data.service_pred }}</td>
+                  <td>{{ data.doctor_pred }}</td>
+                  <td>{{ data.medicine_pred }}</td>
+                  <td>{{ data.fee_pred }}</td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+{% endblock %}
+
+{% block script %}
+  <script>
+    $(document).ready(function () {
+      $("#tbdataset_training").DataTable();
+      $("#tbdataset_testing").DataTable();
+    });
+  </script>
+{% endblock %}

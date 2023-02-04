@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block content %}
+      <div class="card ml-1 mr-1 mt-2 mb-5 shadow">
+        <div class="card-header" style="letter-spacing: 1px">
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-bordered text-center table-striped" alignn="left" id="tbdataset" width="100%" cellspacing="0">
+              <thead>
+                <tr>
+                  <th>No</th>
+                  <th>Content</th>
+                  <th>Score</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for crawling in data_crawling %}
+                <tr>
+                  <td>{{ loop.index }}</td>
+                  <td>{{ crawling.content }}</td>
+                  <td>{{ crawling.score }}</td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+{% endblock %}
+
+{% block script %}
+  <script>
+    $(document).ready(function () {
+      $("#tbdataset").DataTable();
+    })
+  </script>
+{% endblock %}

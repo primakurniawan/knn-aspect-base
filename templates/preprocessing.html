@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block content %}
+      <div class="card ml-1 mr-1 mt-2 mb-5 shadow">
+        <div class="card-header" style="letter-spacing: 1px">
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-bordered text-center table-striped" alignn="left" id="tbdataset" width="100%" cellspacing="0">
+              <thead>
+                <tr>
+                  <th>No</th>
+                  <th>Content</th>
+                  <th>After Preprocessing</th>
+                  <th>Service</th>
+                  <th>Doctor</th>
+                  <th>Medicine</th>
+                  <th>Fee</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for preprocessing in data_preprocessing %}
+                <tr>
+                  <td>{{ loop.index }}</td>
+                  <td>{{ preprocessing.content }}</td>
+                  <td>{{ preprocessing.after_preprocessing }}</td>
+                  <td>{{ preprocessing.service }}</td>
+                  <td>{{ preprocessing.doctor }}</td>
+                  <td>{{ preprocessing.medicine }}</td>
+                  <td>{{ preprocessing.fee }}</td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    
+{% endblock %}
+
+{% block script %}
+  <script>
+    $(document).ready(function () {
+      $("#tbdataset").DataTable();
+    });
+  </script>
+{% endblock %}
