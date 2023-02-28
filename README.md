@@ -3,14 +3,14 @@
 ## install pyhton
 command in powershell
 ```console
-pip install flask pandas
+pip install flask pandas openpyxl
 ```
 
 ---
 ## install jupyter notebook
 command in anaconda terminal
 ```console
-pip install pandas google_play_scraper matplotlib Sastrawi sklearn numpy
+pip install pandas google_play_scraper matplotlib Sastrawi scikit-learn numpy
 ```
 
 ---
